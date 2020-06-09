@@ -1,10 +1,8 @@
 package main
 
-// Definition for singly-linked list.
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import "github.com/cloudingcity/go-leetcode/util"
+
+type ListNode = util.ListNode
 
 func hasCycle(head *ListNode) bool {
 	if head == nil || head.Next == nil {

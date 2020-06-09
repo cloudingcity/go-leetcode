@@ -1,10 +1,8 @@
 package main
 
-// Definition for singly-linked list.
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import "github.com/cloudingcity/go-leetcode/util"
+
+type ListNode = util.ListNode
 
 func reverseList(head *ListNode) *ListNode {
 	var prev *ListNode
@@ -14,14 +12,11 @@ func reverseList(head *ListNode) *ListNode {
 	return prev
 }
 
-// 1 2 3 nil
-
-// recursive
-func reverseList2(head *ListNode) *ListNode {
+func reverseListWithRecursive(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
-	p := reverseList2(head.Next)
+	p := reverseListWithRecursive(head.Next)
 	head.Next.Next = head
 	head.Next = nil
 	return p

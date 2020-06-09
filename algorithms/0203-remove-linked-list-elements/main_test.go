@@ -8,11 +8,9 @@ import (
 )
 
 func Test(t *testing.T) {
-	list := util.NewCycleList([]int{2, 0, -4})
-	head := &ListNode{Val: 3}
-	head.Next = list
+	list := util.NewList([]int{1, 2, 6, 3, 4, 5, 6})
+	want := []int{1, 2, 3, 4, 5}
+	got := util.ListToNums(removeElements(list, 6))
 
-	want := 2
-	got := detectCycle(head).Val
 	assert.Equal(t, want, got)
 }
