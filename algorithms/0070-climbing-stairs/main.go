@@ -33,3 +33,26 @@ func climbStairsDP(n int) int {
 	}
 	return dp[n]
 }
+
+func climbStairsAll(n int) [][]int {
+	var res [][]int
+	backtrack(n, &res, nil)
+	return res
+}
+
+func backtrack(n int, res *[][]int, track []int) {
+	if n == 0 {
+		ans := make([]int, len(track))
+		copy(ans, track)
+		*res = append(*res, ans)
+		return
+	}
+
+	for i := 1; i <= 2; i++ {
+		if n-i >= 0 {
+			track = append(track, i)
+			backtrack(n-i, res, track)
+			track = track[:len(track)-1]
+		}
+	}
+}
