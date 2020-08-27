@@ -20,6 +20,7 @@ func Test(t *testing.T) {
 	}
 	for _, tt := range tests {
 		assert.Equal(t, tt.want, fib(tt.N))
+		assert.Equal(t, tt.want, fibDP(tt.N))
 		assert.Equal(t, tt.want, fibIter(tt.N))
 	}
 }
