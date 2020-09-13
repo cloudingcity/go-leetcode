@@ -22,7 +22,7 @@ func (g *Graph) topologicalSort() []int {
 	visited := make([]bool, g.vertices)
 	for i := 0; i < g.vertices; i++ {
 		if !visited[i] {
-			g.topologicalSortUtil(i, &visited, &stack)
+			g.topologicalSortUtil(i, visited, &stack)
 		}
 	}
 
@@ -33,10 +33,10 @@ func (g *Graph) topologicalSort() []int {
 	return res
 }
 
-func (g *Graph) topologicalSortUtil(v int, visited *[]bool, stack *[]int) {
-	(*visited)[v] = true
+func (g *Graph) topologicalSortUtil(v int, visited []bool, stack *[]int) {
+	visited[v] = true
 	for _, w := range g.adj[v] {
-		if !(*visited)[w] {
+		if !visited[w] {
 			g.topologicalSortUtil(w, visited, stack)
 		}
 	}
