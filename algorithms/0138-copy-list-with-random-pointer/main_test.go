@@ -17,17 +17,6 @@ func Test(t *testing.T) {
 	assert.Equal(t, want, got)
 }
 
-func Test2(t *testing.T) {
-	head := newList([]int{7, 13, 11, 10, 1})
-
-	want := []int{7, 13, 11, 10, 1}
-	got := listToNums(copyRandomList2(head))
-
-	head.Val = 99999
-
-	assert.Equal(t, want, got)
-}
-
 func newList(nums []int) *Node {
 	dummy := &Node{}
 	node := dummy
