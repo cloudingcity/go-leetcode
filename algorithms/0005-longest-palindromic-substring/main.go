@@ -5,23 +5,24 @@ func longestPalindrome(s string) string {
 		return s
 	}
 
-	var res string
+	var ans string
 	for i := range s {
-		res = maxPalindromic(s, i, i, res)   // odd:  abcba
-		res = maxPalindromic(s, i, i+1, res) // even: abba
+		// odd: abcba
+		if odd := maxPalindrome(s, i, i); len(odd) > len(ans) {
+			ans = odd
+		}
+		// even: abba
+		if even := maxPalindrome(s, i, i+1); len(even) > len(ans) {
+			ans = even
+		}
 	}
-	return res
+	return ans
 }
 
-func maxPalindromic(s string, i int, j int, res string) string {
-	var sub string
-	for i >= 0 && j <= len(s)-1 && s[i] == s[j] {
-		sub = s[i : j+1]
+func maxPalindrome(s string, i, j int) string {
+	for i >= 0 && j < len(s) && s[i] == s[j] {
 		i--
 		j++
 	}
-	if len(res) < len(sub) {
-		return sub
-	}
-	return res
+	return s[i+1 : j]
 }
